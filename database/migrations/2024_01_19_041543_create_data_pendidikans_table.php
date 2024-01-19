@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('data_pendidikans', function (Blueprint $table) {
             $table->id();
+            $table->string('nisn')->unique();
+            $table->string('nama_lengkap');
+            $table->tinyInteger('jenis_sekolah');
+            $table->string('asal_sekolah');
+            $table->string('kelas');
+            $table->string('nama_ayah');
+            $table->string('nama_ibu');
             $table->timestamps();
         });
     }
