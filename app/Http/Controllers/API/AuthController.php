@@ -20,4 +20,11 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'Unauthorized'], 401);
     }
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+        $request->session()->flush();
+        return response()->json(['message' => 'Logged out'], 200);
+    }
 }
