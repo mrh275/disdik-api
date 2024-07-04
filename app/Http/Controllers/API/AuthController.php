@@ -13,9 +13,20 @@ class AuthController extends Controller
         $credentials = $request->only('username', 'password');
 
         $user = Auth::attempt($credentials);
-        if ($user) {
-            $token = $request->user()->createToken('authToken')->plainTextToken;
-            return response()->json(['token' => $token], 200);
+        try {
+            if ($user) {
+                $token = $request->user()->createToken('authToken')->plainTextToken;
+                return response()->json([
+                    'token' => $token,
+                    'status' => 200,
+                    'message' => 'Login successful'
+                ], 200);
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+                'status' => $e->getCode(),
+            ], 401);
         }
 
         return response()->json(['message' => 'Unauthorized'], 401);
@@ -24,7 +35,9 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
-        $request->session()->flush();
-        return response()->json(['message' => 'Logged out'], 200);
+        return response()->json([
+            'message' => 'Logged out successfully',
+            'status' => 200,
+        ], 200);
     }
 }
