@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\FetchData;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,10 +17,12 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::create([
-            'name' => 'Operator',
-            'username' => 'operator',
-            'password' => Hash::make('operator')
-        ]);
+        // User::create([
+        //     'name' => 'Operator',
+        //     'username' => 'operator',
+        //     'password' => Hash::make('operator')
+        // ]);
+
+        FetchData::factory(100)->create();
     }
 }
