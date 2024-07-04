@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('fetch_data', function (Blueprint $table) {
             $table->id();
             $table->string('nisn')->unique();
-            $table->string('name');
+            $table->string('nama');
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->tinyInteger('pendidikan_terakhir');
             $table->string('asal_sekolah');
-            $table->tinyInteger('tahun_lulus');
+            $table->integer('tahun_lulus');
             $table->string('kelas');
             $table->timestamps();
         });
