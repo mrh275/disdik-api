@@ -18,10 +18,10 @@ class FetchDataFactory extends Factory
     {
         return [
             'nisn' => '009' . fake()->unique($reset = true)->numberBetween(1111111, 9999999),
-            'nama' => fake()->firstName($gender = 'female') . ' ' . fake()->lastName(),
-            'jenis_kelamin' => 'P',
+            'nama' => fake()->firstName($gender = 'male') . ' ' . fake()->lastName(),
+            'jenis_kelamin' => 'L',
             'tempat_lahir' => 'Karawang',
-            'tanggal_lahir' => date(fake()->randomElement([2008, 2009, 2010]) . '-' . fake()->month() . '-' . fake()->dayOfMonth()),
+            'tanggal_lahir' => date('Y-m-d', strtotime(fake()->randomElement([2008, 2009, 2010]) . '-' . fake()->month() . '-' . fake()->dayOfMonth())),
             'pendidikan_terakhir' => 2,
             'asal_sekolah' => fake()->randomElement([
                 'SMPN 1 Cikampek',
